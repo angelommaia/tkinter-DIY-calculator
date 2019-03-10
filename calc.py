@@ -18,7 +18,15 @@ display = Entry(frame, bd = 5, justify='right', font="tahoma")
 display.pack(side = LEFT)
 
 #botoes
-clearbutton = Button(frame, text="C", font="tahoma", fg="blue", command = lambda: display.delete(0,"end"))
-clearbutton.pack(side=LEFT)
+clearButton = Button(frame, text="C", font="tahoma", fg="blue", command = lambda: display.delete(0,"end"))
+clearButton.pack(side=LEFT)
 
+equalButton = Button(bottomframe, text="=", font="tahoma", command = lambda: avaliar_eq(display))
+equalButton.pack(side=LEFT)
+
+def avaliar_eq(display):
+	text=eval(display.get())
+	display.delete(0,"end")
+	display.insert(0,text)
+	
 root.mainloop()
