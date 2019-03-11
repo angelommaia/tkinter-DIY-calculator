@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from tkinter import *
+import subprocess
 
 #a tela foi dividida em dois frames, onde os botoes devem ser distribuidos
-root = Tk()							
+root = Tk()						
 frame = Frame(root)  
 frame.pack()
 bottomframe = Frame(root)
@@ -18,14 +19,13 @@ frame.pack(expand = NO, fill = BOTH)
 #display
 #====Exibir Display====#
 display = Entry(frame, bd = 5, justify='right', font="tahoma")
-display.pack(side = LEFT)
+display.pack(padx=10, pady=20, side=LEFT)
 
 #botoes
-clearButton = Button(frame, text="C", font="tahoma", fg="blue", command = lambda: display.delete(0,"end"))
 #====Limpar o Display====#
 #lambda permite o uso de variaveis locais em outras partes do programa
-clearButton = Button(frame, text="C", font="tahoma", fg="blue", command = lambda: display.delete(0,"end")) 
-clearButton.pack(side=LEFT)
+clearButton = Button(bottomframe, text="C", font="tahoma", fg="blue", command = lambda: display.delete(0,"end")) 
+clearButton.pack(padx=10, pady=0, side=RIGHT)
 
 #====Exibir Resultado====# 
 equalButton = Button(bottomframe, text="=", font="tahoma", command = lambda: avaliar_eq(display))
@@ -38,6 +38,12 @@ zweiButton.pack(side=LEFT)
 dreiButton = Button(bottomframe, text="3", font="tahoma", command = lambda: display.insert("end","3"))
 dreiButton.pack(side=LEFT)
 
+
+#====Executar um .bat====#
+open_expButton = Button(bottomframe, text="exp", font="tahoma", command = lambda: subprocess.call(['open_explorer.bat']))
+open_expButton.pack(side=LEFT)
+
+ 
 def avaliar_eq(display):
 	text=eval(display.get())
 	display.delete(0,"end")
