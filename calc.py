@@ -12,8 +12,7 @@ bottomframe.pack( side = BOTTOM )
 
 #====Frame Layout====#
 frame.option_add('*Font', 'tahoma 20 bold')
-frame.master.title('Simple Calculator')
-frame.master.title('Simple Calculator')		#título da janela
+frame.master.title('Display')
 frame.pack(expand = NO, fill = BOTH)
 
 #display
